@@ -119,12 +119,10 @@ This will create the contract deployment instructions for Truffle.
 
 [HDWalletProvider](https://github.com/trufflesuite/truffle/tree/develop/packages/hdwallet-provider) is Truffle's separate npm package used to sign transactions.
 
-For compatibility considerations, you must install version `1.2.3`.
-
 Run:
 
 ``` sh
-npm install @truffle/hdwallet-provider@1.2.3
+npm install @truffle/hdwallet-provider
 ```
 
 2. Edit `truffle-config.js` to add:
@@ -140,7 +138,7 @@ const private_key = 'PRIVATE_KEY';
 module.exports = {
  networks: {
     testnet: {
-        provider: () => new HDWalletProvider(private_key, "RPC_ENDPOINT"),
+        provider: () => new HDWalletProvider(private_key, "ENDPOINT"),
         network_id: 97,
         confirmations: 3,
         timeoutBlocks: 200,
@@ -161,7 +159,7 @@ where
 * `testnet` — any network name that you will pass to the `truffle migrate --network` command.
 * `HDWalletProvider` — Truffle's custom provider to sign transactions.
 * PRIVATE_KEY — the private key of your Binance Smart Chain account that will deploy the contract. The account must have enough BNB funds to run the deployment. See also [Binance Smart Chain Faucet](https://testnet.binance.org/faucet-smart).
-* RPC_ENDPOINT — your Binance Smart Chain node RPC endpoint with username and password. The format is `https://user-name:pass-word-pass-word-pass-word@nd-123-456-789.p2pify.com`. See also [View node access and credentials](/platform/view-node-access-and-credentials).
+* ENDPOINT — your Binance Smart Chain node HTTPS endpoint. The format is `https://nd-123-456-789.p2pify.com/3c6e0b8a9c15224a8228b9a98ca1531d`. See also [View node access and credentials](/platform/view-node-access-and-credentials) and [Tools](/operations/bsc/tools).
 * `network_id` — the network ID of the Binance Smart Chain network: mainnet is `56`, testnet is `97`.
 * `solc` — the Solidity compiler version that Truffle must use. OpenZeppelin contracts have a higher version Solidity compiler requirement than the default Truffle installation, hence you must provide a specific compiler version.
 
